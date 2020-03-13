@@ -1,0 +1,39 @@
+{
+  "name": "password-protected",
+  "version": "1.0.0",
+  "description": "Express password-protected middleware for drop-in private websites",
+  "author": "Brian Dombrowski",
+  "license": "ISC",
+  "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/bdombro/password-protected/issues"
+  },
+  "homepage": "https://github.com/bdombro/password-protected#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdombro/password-protected.git"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "express",
+    "middleware",
+    "password",
+    "node"
+  ],
+  "peerDependencies": {
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "typescript": "*"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/cookie-parser": "^1.4.2",
+    "@types/express": "^4.17.3",
+    "@types/jsonwebtoken": "^8.3.8"
+  }
+}

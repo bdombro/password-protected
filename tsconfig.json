@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"declaration": true,
+		"lib": ["esnext"],
+		"module": "commonjs",
+		"outDir": "dist",
+		"rootDir": "src",
+		"strict": true,
+		"target": "esnext"
+	},
+	"include": ["src/**/*"]
+}
