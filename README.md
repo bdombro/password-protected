@@ -19,7 +19,11 @@ const app = express();
 app.use(cookieParser());
 app.use(bodyParser());
 app.use(shrinkRay());
-app.use(passwordProtected('hellopwd', 'supersecret'));
+app.use(passwordProtected({
+    password: 'superpassword',
+    jwtSecret: 'supersecret',
+    hint: "Hint: password is 'superpassword'",
+}));
 app.use(express.static(__dirname + "/private")); // Serve files from the private folder
 app.listen(3000, () => {
     console.info("Express is listening at http://localhost:3000");
