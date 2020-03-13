@@ -1,6 +1,6 @@
 {
   "name": "password-protected",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Express password-protected middleware for drop-in private websites",
   "author": "Brian Dombrowski",
   "license": "ISC",
