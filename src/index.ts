@@ -1,9 +1,9 @@
 import * as jwt from "jsonwebtoken";
 
 export interface passwordProtectedProps {
+  pageTitle?: string,
   password?: string,
   jwtSecret?: string,
-  pageTitle: string,
   hint?: string,
   jwtData?: any,
   loginHtml?: string,
@@ -11,10 +11,10 @@ export interface passwordProtectedProps {
 
 export default function passwordProtected(
   {
+    pageTitle = 'Password Protected Page',
     password = 'superpassword',
     jwtSecret = 'supersecret',
-    pageTitle = 'Password Protected Page',
-    hint= "Hint: password is 'superpassword'",
+    hint,
     jwtData = {name: "Unknown", role: "admin"},
     loginHtml
   }: passwordProtectedProps
@@ -52,13 +52,14 @@ function genLoginHtmlDefault (pageTitle: string, hint: string) {
         <meta charset="UTF-8">
     </head>
     <body>
+        <h1>${pageTitle}</h1>
         <form method="post">
             <label for="password">Password</label>
             <input name="password" type="password"/>
             <button>Submit</button>
         </form>
         <br/>
-        <div>${hint}</div>
+        <div style="max-width: 400px; background: #ccc; padding: 10px; border-radius: 4px">${hint}</div>
     </body>
 </html>
 `;

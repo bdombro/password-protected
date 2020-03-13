@@ -6,7 +6,8 @@
 		"module": "commonjs",
 		"outDir": "lib",
 		"strict": true,
-		"target": "es2015"
+		"target": "es2015",
+		"resolveJsonModule": true
 	},
 	"include": ["src/**/*"]
 }
