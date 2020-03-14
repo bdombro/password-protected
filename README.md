@@ -1,6 +1,5 @@
 # Password Protected
-
-Express password-protected middleware for drop-in private websites.
+Zero-config, lean Express middleware for password-protecting websites.
 
 This is useful if you'd like to make any static website or express server password protected.
 
@@ -14,8 +13,8 @@ There are two other similar packages in NPM, but this one:
 1. Basic: [examples/swagger](example/swagger)
 1. With zeit now hosting: https://private-swagger.now.sh ([src](https://github.com/bdombro/private-swagger))
 
-## Usage
 
+## Usage
 ```javascript
 import cookieParser from 'cookie-parser';
 import express from 'express';
