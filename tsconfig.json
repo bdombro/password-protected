@@ -4,10 +4,13 @@
 		"declaration": true,
 		"lib": ["esnext"],
 		"module": "commonjs",
-		"outDir": "lib",
+		"outDir": "dist",
 		"strict": true,
 		"target": "es2015",
-		"resolveJsonModule": true
+		"resolveJsonModule": true,
+		"esModuleInterop": true
 	},
-	"include": ["src/**/*"]
+	"include": [
+		"lib/**/*"
+	]
 }

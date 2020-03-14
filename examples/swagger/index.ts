@@ -1,8 +1,8 @@
-import * as bodyParser from 'body-parser';
-import * as cookieParser from 'cookie-parser';
-import * as express from 'express';
-import * as shrinkRay from 'shrink-ray-current';
-import passwordProtected from '../../src';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import express from 'express';
+import shrinkRay from 'shrink-ray-current';
+import passwordProtected from '../../lib';
 const repo = require('../../package.json').repository.url.slice(4);
 
 const app = express();

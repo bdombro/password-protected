@@ -4,7 +4,8 @@
   "description": "Express password-protected middleware for drop-in private websites",
   "author": "Brian Dombrowski",
   "license": "ISC",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bugs": {
     "url": "https://github.com/bdombro/password-protected/issues"
   },
