@@ -11,15 +11,14 @@ Examples:
 To use,
 
 ```javascript
-const passwordProtected = require('password-protected');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const express = require('express');
-const shrinkRay = require('shrink-ray-current');
+import cookieParser from 'cookie-parser';
+import express from 'express';
+import shrinkRay from 'shrink-ray-current';
+import passwordProtected from 'password-protected';
 
 const app = express();
+app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
-app.use(bodyParser());
 app.use(shrinkRay());
 app.use(passwordProtected({}));
 app.use(express.static(__dirname + "/private")); // Serve files from the private folder
