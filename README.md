@@ -4,11 +4,17 @@ Express password-protected middleware for drop-in private websites.
 
 This is useful if you'd like to make any static website or express server password protected.
 
-Examples: 
+There are two other similar packages in NPM, but this one:
+1. Works
+2. Typescript
+3. Better options, with strong defaults
+
+
+## Examples: 
 1. Basic: [examples/swagger](example/swagger)
 1. With zeit now hosting: https://private-swagger.now.sh ([src](https://github.com/bdombro/private-swagger))
 
-To use,
+## Usage
 
 ```javascript
 import cookieParser from 'cookie-parser';
