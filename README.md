@@ -34,3 +34,11 @@ app.listen(3000, () => {
 
 ## Options
 
+All options are optional.
+
+- pageTitle: The html title and h2 tag to display on the page
+- password: Password for the website. Default = 'superpassword'
+- jwtSecret: A secret to sign/secure tokens. Default = 'supersecret'
+- hint: Display helpful text below the login form. Default is none.
+- jwtData: Extra data to store in the token.
+- loginHtml: Replace the default login page with whatever you want. The only requirement is that it has a form with input name='password'.
