@@ -14,7 +14,7 @@ There are two other similar packages in NPM, but this one:
 1. With zeit now hosting: https://private-swagger.now.sh ([src](https://github.com/bdombro/private-swagger))
 
 
-## Usage
+## Basic Usage
 ```javascript
 import cookieParser from 'cookie-parser';
 import express from 'express';
@@ -31,3 +31,6 @@ app.listen(3000, () => {
     console.info("Express is listening at http://localhost:3000");
 });
 ```
+
+## Options
+

@@ -1,3 +1,4 @@
+import * as crypto from "crypto";
 import * as jwt from "jsonwebtoken";
 
 export interface passwordProtectedProps {
@@ -20,7 +21,7 @@ export default function passwordProtected(
   }: passwordProtectedProps
 ) {
   return (req: any, res: any, next: any) => {
-    if (req.method === 'POST' && req.body.password === password) {
+    if (req.method === 'POST' && crypto.timingSafeEqual(Buffer.from(req.body.password), Buffer.from(password))) {
       res.cookie(
         'auth',
         jwt.sign({data: jwtData}, jwtSecret as string, {expiresIn: 86400}),
