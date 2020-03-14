@@ -51,16 +51,17 @@ function genLoginHtmlDefault (pageTitle: string, hint: string) {
         <title>${pageTitle}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
+        <style>
+            input,p,button {font-size: 16px; line-height: 22px;}
+        </style>
     </head>
     <body>
         <h1>${pageTitle}</h1>
         <form method="post">
-            <label for="password">Password</label>
-            <input name="password" type="password"/>
+            <input name="password" type="password" placeholder="Enter password"/>
             <button>Submit</button>
         </form>
-        <br/>
-        <div style="max-width: 400px; background: #ccc; padding: 10px; border-radius: 4px">${hint}</div>
+        <p style="max-width: 300px; background: #ccc; padding: 10px; border-radius: 4px">${hint}</p>
     </body>
 </html>
 `;
