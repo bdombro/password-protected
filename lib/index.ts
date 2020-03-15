@@ -1,5 +1,7 @@
-import * as crypto from "crypto";
+import bcrypt from "bcrypt";
 import * as jwt from "jsonwebtoken";
+
+const salt = bcrypt.genSaltSync(10);
 
 export interface passwordProtectedProps {
   pageTitle?: string,
@@ -20,8 +22,9 @@ export default function passwordProtected(
     loginHtml
   }: passwordProtectedProps
 ) {
+  const hash = bcrypt.hashSync(password, salt);
   return (req: any, res: any, next: any) => {
-    if (req.method === 'POST' && crypto.timingSafeEqual(Buffer.from(req.body.password), Buffer.from(password))) {
+    if (req.method === 'POST' && bcrypt.compareSync(req.body.password, hash)) {
       res.cookie(
         'auth',
         jwt.sign({data: jwtData}, jwtSecret as string, {expiresIn: 86400}),
