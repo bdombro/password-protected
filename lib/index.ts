@@ -9,7 +9,7 @@ export interface passwordProtectedProps {
   jwtSecret?: string,
   hint?: string,
   jwtData?: any,
-  loginHtml?: string,
+  loginHtmlTemplate?: (pageTitle?: string, hint?:string, passwordRejected?: boolean) => string,
 }
 
 export default function passwordProtected(
@@ -17,9 +17,9 @@ export default function passwordProtected(
     pageTitle = 'Password Protected Page',
     password = 'superpassword',
     jwtSecret = 'supersecret',
-    hint,
+    hint = '',
     jwtData = {name: "Unknown", role: "admin"},
-    loginHtml
+    loginHtmlTemplate,
   }: passwordProtectedProps
 ) {
   const hash = bcrypt.hashSync(password, salt);
@@ -35,7 +35,10 @@ export default function passwordProtected(
     } else {
       jwt.verify(req.cookies.auth, jwtSecret as string, (err: jwt.VerifyErrors, decoded: object) => {
         if (err) {
-          res.send(loginHtml ?? genLoginHtmlDefault(pageTitle, hint as string));
+          res.send(loginHtmlTemplate
+            ? loginHtmlTemplate(pageTitle, hint, req.method === 'POST')
+            : loginHtmlTemplateDefault(pageTitle, hint, req.method === 'POST')
+          );
           res.end();
         } else {
           req.jwtData = decoded;
@@ -46,7 +49,7 @@ export default function passwordProtected(
   };
 }
 
-function genLoginHtmlDefault (pageTitle: string, hint: string) {
+function loginHtmlTemplateDefault (pageTitle: string, hint: string, passwordRejected: boolean = false) {
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -63,6 +66,9 @@ function genLoginHtmlDefault (pageTitle: string, hint: string) {
         <form method="post">
             <input name="password" type="password" placeholder="Enter password"/>
             <button>Submit</button>
+            ${passwordRejected ? `
+                <div style="color: darkred; padding: 5px 0px 5px">Incorrect Password</div>
+            ` : ''}
         </form>
         <p style="max-width: 300px; background: #ccc; padding: 10px; border-radius: 4px">${hint}</p>
     </body>
