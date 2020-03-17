@@ -1,6 +1,6 @@
 {
   "name": "password-protected",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "description": "Express password-protected middleware for drop-in private websites",
   "author": "Brian Dombrowski",
   "license": "ISC",
@@ -30,7 +30,6 @@
   },
   "dependencies": {
     "@types/bcrypt": "^3.0.0",
-    "bcrypt": "^4.0.0",
     "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
