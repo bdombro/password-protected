@@ -1,7 +1,5 @@
-import bcrypt from "bcrypt";
 import * as jwt from "jsonwebtoken";
-
-const salt = bcrypt.genSaltSync(10);
+import crypto from 'crypto';
 
 export interface passwordProtectedProps {
   pageTitle?: string,
@@ -22,9 +20,8 @@ export default function passwordProtected(
     loginHtmlTemplate,
   }: passwordProtectedProps
 ) {
-  const hash = bcrypt.hashSync(password, salt);
   return (req: any, res: any, next: any) => {
-    if (req.method === 'POST' && bcrypt.compareSync(req.body.password, hash)) {
+    if (req.method === 'POST' && safeCompare(req.body.password, password)) {
       res.cookie(
         'auth',
         jwt.sign({data: jwtData}, jwtSecret as string, {expiresIn: 86400}),
@@ -47,6 +44,16 @@ export default function passwordProtected(
       })
     }
   };
+}
+
+function safeCompare (password1: string, password2: string) {
+  return crypto.timingSafeEqual(
+    Buffer.from(padString(password1)),
+    Buffer.from(padString(password2)),
+  )
+}
+function padString (password: string) {
+  return (password + 'X'.repeat(20)).slice(0,20);
 }
 
 function loginHtmlTemplateDefault (pageTitle: string, hint: string, passwordRejected: boolean = false) {
