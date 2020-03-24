@@ -27,7 +27,7 @@ export default function passwordProtected(
         jwt.sign({data: jwtData}, jwtSecret as string, {expiresIn: 86400}),
         {maxAge: 86400}
       );
-      res.write("<script>window.location='/'</script>");
+      res.write("<script>history.back()</script>");
       res.end();
     } else {
       jwt.verify(req.cookies.auth, jwtSecret as string, (err: jwt.VerifyErrors, decoded: object) => {
@@ -71,13 +71,19 @@ function loginHtmlTemplateDefault (pageTitle: string, hint: string, passwordReje
     <body>
         <h1>${pageTitle}</h1>
         <form method="post">
-            <input name="password" type="password" placeholder="Enter password" autofocus="autofocus"/>
+            <input id="password" name="password" type="password" placeholder="Enter password" autofocus="autofocus"/>
             <button>Submit</button>
             ${passwordRejected ? `
                 <div style="color: darkred; padding: 5px 0px 5px">Incorrect Password</div>
             ` : ''}
         </form>
         <p style="max-width: 300px; background: #ccc; padding: 10px; border-radius: 4px">${hint}</p>
+        
+        <script>
+            var input = document.getElementById('password');
+            input.focus();
+            input.select();
+        </script>
     </body>
 </html>
 `;
