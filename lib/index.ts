@@ -71,7 +71,7 @@ function loginHtmlTemplateDefault (pageTitle: string, hint: string, passwordReje
     <body>
         <h1>${pageTitle}</h1>
         <form method="post">
-            <input name="password" type="password" placeholder="Enter password"/>
+            <input name="password" type="password" placeholder="Enter password" autofocus="autofocus"/>
             <button>Submit</button>
             ${passwordRejected ? `
                 <div style="color: darkred; padding: 5px 0px 5px">Incorrect Password</div>
